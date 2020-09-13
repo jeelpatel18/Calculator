@@ -33,37 +33,37 @@ class Calculator extends Component {
         p.preventDefault();
         
         var data = {
-            name : this.state.op1,
+            op1 : this.state.op1,
+            op2 : this.state.op2,
+            op : '+'
             
         }
-        console.log("Data = " + data);
 
-
-        // axios.defaults.withCredentials = true;
-        // axios.post('http://localhost:3001/calculate', data)
-        //  .then(res => {
-        //      console.log(res);
-        //  })
+        axios.defaults.withCredentials = true;
+        axios.post('http://localhost:3001/calculate', data)
+         .then(res => {
+             console.log(res);
+         })
     }
 
     render() {
         return(
             <div>
                 <form align ="center">
-                       { /* <input type="text" name="op1" onChange={this.state.op1Handler} /> <br/>
+                        <input type="text" name="op1" onChange={this.op1Handler} /> <br/>
                         
                         {/* <input type="radio" name="calc" value="addition" />+ <br/>
                         <input type="radio" name="calc" value="subtraction"/>- <br/>
                         <input type="radio" name="calc" value="multiplication"/>* <br/>
                         <input type="radio" name="calc" value="division"/>/ <br/> 
-                        */}
-{/*
-                        <input type="text" name="op2"  onChange={this.state.op2Handler} /> <br/><br/>
+                         */}
 
-                    <input type="submit" value="Ans" onClick={this.state.submitHandler}/> <br/>  
-*/}
-                <input type="text" name="sample" onChange={this.state.op1Handler} /> <br/>
-                <input type="button" name="btn" onClick={this.state.submitHandler} />                       
+                        <input type="text" name="op2"  onChange={this.op2Handler} /> <br/><br/>
+
+                    <input type="submit" value="Submit" onClick={this.submitHandler}/> <br/>  
+
+                {/* <input type="text" name="sample" onChange={this.state.op1Handler} /> <br/> */}
+                {/* <input type="button" name="Submit" onClick={this.state.submitHandler} />                        */}
                 </form>
                
             </div>

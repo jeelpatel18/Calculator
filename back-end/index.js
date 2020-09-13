@@ -29,8 +29,8 @@ app.post('/calculate',function(req,res) {
 
     console.log("POST request is called....");
 
-    var x = req.body.x;
-    var y = req.body.y;
+    var x = req.body.op1;
+    var y = req.body.op2;
     var op = req.body.op;
 
 
