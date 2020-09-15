@@ -50,6 +50,7 @@ class Calculator extends Component {
         var data = {
             op1 : this.state.op1,
             op2 : this.state.op2,
+
             op : this.state.op
             
         }
@@ -57,15 +58,15 @@ class Calculator extends Component {
         axios.defaults.withCredentials = true;
         axios.post('http://localhost:3001/calculate', data)
          .then(res => {
-             console.log(res.data.status);
-
-             if(res.data.status === 200){
-                 this.setState({
-                     successFlag: true,
-                     answer : res.data.ans
-                 })
-             }
-           // return <Answer ans={res} />;
+            console.log(res);
+            
+            if(res.data.status === 200) {
+                this.setState({
+                    successFlag: true,
+                    answer: res.data.ans
+                })
+            }
+         
          })
     }
  
