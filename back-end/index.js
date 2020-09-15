@@ -4,6 +4,11 @@ const http = require('http');
 const hostname="localhost";
 const port=3001;
 
+
+//var DB = require('./db/index');
+
+
+
 const app = express();
 
 var cors = require('cors');
@@ -25,37 +30,49 @@ app.use(function(req,res,next){
     next()
 });
 
+app.get('/studentData', async(req, res) => {
+    try{
+        let blogs = await DB.Blogs.all();
+        res.json(blogs);
+    }
+    catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+
+})
+
 app.post('/calculate',function(req,res) {
 
     console.log("POST request is called....");
 
-    var x = req.body.x;
-    var y = req.body.y;
+    var x = parseInt(req.body.op1);
+    var y = parseInt(req.body.op2);
     var op = req.body.op;
 
 
     console.log("operand1 = " + x + "   operand2 = " + y + "   operator = " + op);
 
-    // if(op == '+') {
-    //     ans = x + y;
-    // }
-    // else if(op == '-') {
-    //     ans = x - y;
-    // }
-    // else if(op == '*') {
-    //     ans = x * y;
-    // }
-    // else if(op == '/') {
-    //     ans = x / y;
-    // }
+    if(op == "addition") {
+        ans = x + y;
+    }
+    else if(op == "subtraction") {
+        ans = x - y;
+    }
+    else if(op == "multiplication") {
+        ans = x * y;
+    }
+    else if(op == "division") {
+        ans = x / y;
+    }
 
-    // console.log("Answer = " + ans);
+    console.log("Answer = " + ans);
     
-    // var data = { 
-    //     result: ans,
-    //     status: 200  
-    // }
-    // res.send(JSON.stringify(data));
+    var data = { 
+        result: ans,
+        status: 200  
+    }
+    res.send(JSON.stringify(data));
 
 });
 
