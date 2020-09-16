@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Answer = (props) => {
-    return(
+const AnswerComponent = (props) => {
+    console.log(" Props", props.data);
+    return( 
         <div>
-            <h2> { props.ans } </h2>
+            <h1> Hi </h1>
+            <h2> { props.data.answer } </h2>
         </div>
     );
 }
-export default Answer;
+export default AnswerComponent;
