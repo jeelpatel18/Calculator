@@ -63,7 +63,7 @@ class Calculator extends Component {
             if(res.data.status === 200) {
                 this.setState({
                     successFlag: true,
-                    answer: res.data.ans
+                    answer: res.data.res
                 })
             }
          
