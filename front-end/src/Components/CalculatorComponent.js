@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Answer from './AnswerComponent';
 import { Redirect } from 'react-router';
+import AnswerComponent from './AnswerComponent';
 
 class Calculator extends Component {
     constructor(props){
@@ -63,7 +63,7 @@ class Calculator extends Component {
             if(res.data.status === 200) {
                 this.setState({
                     successFlag: true,
-                    answer: res.data.res
+                    answer: res.data.result
                 })
             }
          
@@ -74,7 +74,7 @@ class Calculator extends Component {
         var redirectVar = null;
 
         if(this.state.successFlag){
-            redirectVar =  <Redirect to="/Answer" ans={this.state.answer}  />
+            return <AnswerComponent data={this.state}  />
         }
 
         return(
